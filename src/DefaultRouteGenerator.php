@@ -3,7 +3,6 @@
 namespace Svanthuijl\Routable;
 
 use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 use Spatie\Translatable\HasTranslations;
 use Svanthuijl\Routable\Interfaces\HasRoutes;
 use Svanthuijl\Routable\Interfaces\GeneratesRoutes;

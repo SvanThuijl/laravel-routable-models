@@ -27,16 +27,6 @@ class TranslatableExample extends Model implements HasRoutes
     ];
 
     /**
-     *
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'slug' => 'array',
-    ];
-
-    /**
      * Defining the routes for this model
      * @return void
      */
