@@ -1,0 +1,40 @@
+{
+    "name": "svanthuijl/laravel-routable-models",
+    "description": "This packages allows you to create eloquent models which have their own routes.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Simon van Thuijl",
+            "email": "s.vanthuijl@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Svanthuijl\\Routable\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Svanthuijl\\Routable\\Tests\\": "tests",
+            "Svanthuijl\\Routable\\TestSupport\\Database\\Factories\\": "tests/TestSupport/database/factories"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php vendor/bin/testbench package:discover --ansi"
+        ],
+        "test": "php vendor/bin/testbench package:test"
+    },
+    "require": {
+        "php": "^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.2@dev",
+        "orchestra/testbench": "dev-develop",
+        "nunomaduro/collision": "^7.4",
+        "spatie/laravel-translatable": "dev-main"
+    }
+}

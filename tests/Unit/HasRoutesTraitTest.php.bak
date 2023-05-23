@@ -1,0 +1,75 @@
+<?php
+
+namespace Svanthuijl\Routable\Tests\Unit;
+
+use Svanthuijl\Routable\Tests\TestSupport\Models\Example;
+use Svanthuijl\Routable\Tests\TestCase;
+
+class HasRoutesTraitTest extends TestCase
+{
+    public function test_route_path_appends_and_prepends_values_and_removes_double_slashes()
+    {
+        // Make test model
+        $model = Example::factory()->make();
+
+        // Test
+        $testRouteConfig = [
+            'action' => null,
+            'controller' => null,
+            'method' => 'get',
+            'pathAppend' => 'append',
+            'pathPrepend' => 'prepend',
+            'translatable' => true,
+        ];
+        $testRoutePath = Example::generateRoutePath($model, $testRouteConfig, 'en');
+        $testRoutePathExpected = 'en/prepend/' . $model->slug . '/append';
+
+        $this->assertEquals($testRoutePathExpected, $testRoutePath);
+    }
+    public function test_route_path_appends_values_and_removes_double_slashes()
+    {
+        // Make test model
+        $model = Example::factory()->make();
+
+        // Test
+        $testRouteConfig = [
+            'action' => null,
+            'controller' => null,
+            'method' => 'get',
+            'pathAppend' => 'append',
+            'translatable' => true,
+        ];
+        $testRoutePath = Example::generateRoutePath($model, $testRouteConfig, 'en');
+        $testRoutePathExpected = 'en/' . $model->slug . '/append';
+        $this->assertEquals($testRoutePathExpected, $testRoutePath);
+
+    }
+    public function test_route_path_prepends_values_and_removes_double_slashes()
+    {
+        // Make test model
+        $model = Example::factory()->make();
+
+        // Test
+        $testRouteConfig = [
+            'action' => null,
+            'controller' => null,
+            'method' => 'get',
+            'pathPrepend' => 'prepend',
+            'translatable' => true,
+        ];
+        $testRoutePath = Example::generateRoutePath($model, $testRouteConfig, 'en');
+        $testRoutePathExpected = 'en/prepend/' . $model->slug;
+        $this->assertEquals($testRoutePathExpected, $testRoutePath);
+    }
+
+    public function test_generateRoutes_parameters_defaults_to_true()
+    {
+        // Create product
+        $model = Example::factory()->make();
+
+        // Remove setting
+        $model->generateRoutes = null;
+
+        $this->assertTrue($model->generateRoutes());
+    }
+}

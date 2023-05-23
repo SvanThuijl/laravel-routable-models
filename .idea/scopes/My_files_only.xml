@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="My files only" pattern="!file[routable-models]:tests-coverage/*&amp;&amp;!file[routable-models]:vendor/*&amp;&amp;!file[routable-models]:.phpunit.cache/*&amp;&amp;!file[routable-models]:.idea/*&amp;&amp;!file[routable-models]:tests-coverage//*&amp;&amp;!file[routable-models]:vendor//*&amp;&amp;!file[routable-models]:.phpunit.cache//*&amp;&amp;!file[routable-models]:.idea//*" />
+</component>
