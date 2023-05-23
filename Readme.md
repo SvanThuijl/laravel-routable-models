@@ -16,6 +16,7 @@ Migrations are automatically loaded. Optionally, you can publish the migrations 
 php artisan vendor:publish --tag="routable-migrations"
 ```
 
+
 ### Config
 Optionally, you can publish the config file of this package with this command:
 ```shell
