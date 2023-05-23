@@ -7,7 +7,7 @@ The package also offers support for localized routes for translatable models. Th
 ## Installation
 This package can be installed through Composer.
 ```shell
-composer require svanthuijl/routable-models
+composer require svanthuijl/laravel-routable-models
 ```
 
 ### Migrations
@@ -15,6 +15,7 @@ Migrations are automatically loaded. Optionally, you can publish the migrations 
 ```shell 
 php artisan vendor:publish --tag="routable-migrations"
 ```
+
 
 ### Config
 Optionally, you can publish the config file of this package with this command:
@@ -267,7 +268,7 @@ You can also replace the default route generator with your own for more advanced
             ->isLocalized() // For localized models (cannot be used with isTranslatable)
             ->isTranslatable() // For translatable models (cannot be used with isLocalized)
             ->method('get') // Sets the method the route should listen to
-            ->prefix('example') // Prepends} the path with "example/"
+            ->prefix('example') // Prepends the path with "example/"
             ->suffix('example') // Adds "/example" to the path
    }
 ```
