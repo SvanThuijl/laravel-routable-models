@@ -125,7 +125,7 @@ class InteractsWithRoutesTraitTest extends TestCase
     private static function setupTranslatableEnvironment()
     {
         Config::set('routable-models.locale', 'en');
-        Config::set('routable-models.locales', 'en,nl');
+        Config::set('routable-models.locales', ['en' => 'en', 'nl' => 'nl']);
     }
 
     public function test_creates_translatable_routes_on_translatable_model_when_created()

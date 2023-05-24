@@ -9,9 +9,22 @@ return [
     /**
      * The available localizations for routes
      */
-    'locales' => env('APP_LOCALES', null),
+    'locales' => function () {
+        $locale = env('APP_LOCALE', null);
+        $localesStr = env('APP_LOCALES');
 
-    /**§
+        if ($locale === null &&
+            $localesStr === null)
+            return [];
+
+        if ($localesStr === null)
+            return  [$locale];
+
+        return str($localesStr)->explode(',')
+            ->mapWithKeys(fn ($locale) => [$locale => $locale]);
+    },
+
+    /**
      *
      */
     'generator' => \Svanthuijl\Routable\DefaultRouteGenerator::class,

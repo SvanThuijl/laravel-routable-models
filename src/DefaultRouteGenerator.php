@@ -61,7 +61,7 @@ class DefaultRouteGenerator implements GeneratesRoutes
             throw new \InvalidArgumentException('Routable model cannot be localized and translatable');
 
         if ($value &&
-            self::getLocales() === null)
+            config('routable-models.locales') === [])
             throw new \InvalidArgumentException('Routable model cannot be translatable due to missing configuration in routable-models');
 
         $this->isTranslatable = $value;
@@ -207,7 +207,7 @@ class DefaultRouteGenerator implements GeneratesRoutes
         if (!$this->isTranslatable)
             return collect([$this->getPath() => null]);
 
-        return collect(self::getLocales())
+        return collect(config('routable-models.locales'))
             ->mapWithKeys(
                 fn ($locale) =>
                 [
@@ -257,15 +257,5 @@ class DefaultRouteGenerator implements GeneratesRoutes
             return $this->suffix;
 
         return null;
-    }
-
-    private static function getLocales(): Collection|null
-    {
-        $localesStr = config('routable-models.locales');
-        if ($localesStr === null ||
-            $localesStr === '')
-            return null;
-
-        return str($localesStr)->explode(',');
     }
 }

@@ -14,7 +14,7 @@ class DefaultRouteGeneratorTest extends TestCase
     private static function setupTranslatableEnvironment()
     {
         Config::set('routable-models.locale', 'en');
-        Config::set('routable-models.locales', 'en,nl');
+        Config::set('routable-models.locales', ['en' => 'en', 'nl' => 'nl']);
     }
     
     public function test_can_be_created()
@@ -152,6 +152,8 @@ class DefaultRouteGeneratorTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Routable model cannot be translatable due to missing configuration in routable-models');
 
+        Config::set('routable-models.locales', []);
+
         $routeGenerator = new DefaultRouteGenerator();
         $routeGenerator->isTranslatable();
     }
@@ -202,7 +204,7 @@ class DefaultRouteGeneratorTest extends TestCase
     public function test_throws_an_exception_if_model_does_not_use_spatie_translatable_on_translatable_route()
     {
         Config::set('routable-models.locale', 'en');
-        Config::set('routable-models.locales', 'en,nl');
+        Config::set('routable-models.locales', ['en' => 'en', 'nl' => 'nl']);
 
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('"' . Example::class . '" does not use "' . HasTranslations::class . '"');

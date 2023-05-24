@@ -82,7 +82,7 @@ class RoutesFileTest extends TestCase
     private static function setupTranslatableEnvironment()
     {
         Config::set('routable-models.locale', 'en');
-        Config::set('routable-models.locales', 'en,nl');
+        Config::set('routable-models.locales', ['en' => 'en', 'nl' => 'nl']);
     }
     public function test_locale_route_sets_locale_for_application_with_localized_routes()
     {
